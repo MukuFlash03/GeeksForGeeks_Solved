@@ -11,7 +11,7 @@ string extractAlphaNumeric (string str)
 {
     string s = "";
     for (int i = 0; i < str.length(); i++)
-        if (isalpha(str.at(i)))
+        if (isalpha(str.at(i))|| isdigit(str.at(i)))
             s += str.at(i);
 
     return s;
