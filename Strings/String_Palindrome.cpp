@@ -1,15 +1,27 @@
 /*
 Problem:
 https://practice.geeksforgeeks.org/problems/palindrome-string/0
+https://practice.geeksforgeeks.org/problems/save-ironman/0
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-void checkPalin(string str, int l)
+string extractAlphaNumeric (string str)
+{
+    string s = "";
+    for (int i = 0; i < str.length(); i++)
+        if (isalpha(str.at(i)))
+            s += str.at(i);
+
+    return s;
+}
+
+void checkPalin(string str)
 {
     string s = "";
     s.assign(str);
+    int l = s.length();
 
     for (int i = 0; i < l/2; i++)
         swap(s[i],s[l-i-1]);
@@ -23,18 +35,10 @@ void checkPalin(string str, int l)
 
 int main()
 {
-    int t,l;
     string str;
-    cin >> t;
-    cin.ignore(32767, '\n');
-
-    while (t > 0)
-    {
-        cin >> l;
-        cin.ignore(32767, '\n');
-        getline(cin,str);
-        checkPalin(str,l);
-        t--;
-    }
+    getline(cin,str);
+    transform (str.begin(), str.end(), str.begin(), ::tolower);
+    string s = extractAlphaNumeric(str);
+    checkPalin(s);
     return 0;
 }
